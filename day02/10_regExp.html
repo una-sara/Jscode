@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//DB: 敏感词表: 白鹭，青天，紫烟, 明月
+//ajax:         ↓     ↓     ↓    ↓
+//js中: var arr=[白鹭,青天,紫烟,明月]
+var arr=["白鹭","青天","紫烟","明月"];
+
+
+
+
+
+//arr.join("|")//将arr中每个关键词用|连接起来，拼成或关系的一条正则表达式
+//客户端代码不变！
+var reg=new RegExp(arr.join("|"));
+//请用户输入消息
+var msg=prompt("请输入消息内容")
+//在msg中查找符合reg规则要求的敏感词位置
+var i=msg.search(reg);
+if(i!=-1){
+  document.write("<h1 style='color:red'>包含敏感词！禁止发送</h1>")
+}else{
+  document.write(`<h1>然哥说: ${msg}</h1>`)
+}
+
+</script>
+</body>
+</html>

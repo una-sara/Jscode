@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  //var str="老师: 请用小红 我的 朋友造句。小亮: 小红是我的朋友。小然: 朋友！小红是我的！";
+  var str="no zuo no die,no can no bibi";
+  //先查找共有几处关键词
+  var arr=str.match(/小[\u4e00-\u9fa5]/g);
+  //如果找不到，arr=null
+  //再替换所有关键词
+  str=str.replace(/小[\u4e00-\u9fa5]/g,"**");
+  //如果找不到，replace不会报错！只不过什么也不做！
+  console.log(str);
+  //显示共有几处: match返回的数组的length属性，就表示找到的所有关键词的个数！
+
+  console.log(`共替换${
+    arr!=null?arr.length : 0
+  //如果 ...   就...     否则
+  // if(条件)            else
+  }处`)
+  //但是，如果找不到 arr=null
+  //                  null.length
+  //                  报错
+  //          无法访问null的legnth属性
+</script>
+</body>
+</html>

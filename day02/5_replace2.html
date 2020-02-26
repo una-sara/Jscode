@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//每个单词首字母转大写: 
+var str="you can you up";
+var arr=str.match(/\b[a-z]/ig);
+//找到每个单词的首字母，将每个首字母都转为它的大写形式
+str=str.replace(
+  /\b[a-z]/ig,
+//回调函数: 
+//replace会自动在每个找到的关键词上调用一次这个回调函数。找到几个词，就反复调用几次！每次调用时，会自动将本次找到的关键词传给函数的参数keyword
+//2个要求:    c
+//           ↓
+  function(keyword){//1. 必须有一个参数接住本次找到的一个关键词
+    //2. 必须返回处理后的新词
+    console.log("自动调用一次回调函数")
+    console.log(`收到keyword:${keyword}`);
+    return keyword.toUpperCase();
+  }// ↓
+   // C
+//replace会将回调函数返回的新词，替换到本次找到的关键词位置！
+)
+console.log(str);
+//You Can You Up
+console.log(`共替换:${
+  arr!=null?arr.length:0
+}处`)
+</script>
+</body>
+</html>

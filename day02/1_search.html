@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//每个案例3遍
+//1. 注释+代码抄一遍
+//2. 保留注释删除代码，自己试着把代码填回来
+//3. 删除注释和代码，自己试着写出注释和代码
+//--只有做到第三遍的程度，才算自己会。
+
+//屏蔽用户在聊天记录中的"微信"敏感词，及其变种。
+//先请用户输入一条消息
+var msg=prompt("请输入消息内容");
+//用正则表达式检查消息中是否包含敏感词"微信"及其变种
+//微信的正则: 
+//第一个字: 微或wei，其中ei可有可无，最多一次——(微|w(ei)?)
+//第一个字和第二个字之间可能有，也可能没有不确定数量的空字符——\s*
+//第二个字: 信或xin，其中in可有可无，最多一次——(信|x(in)?)
+var i=msg.search(/(微|w(ei)?)\s*(信|x(in)?)/i);
+if(i!=-1){//如果包含
+  //就提示包含敏感词，禁止发送
+//(向)文档(中)写(一段html片段)
+  document.write("<h1 style='color:red'>包含敏感词！禁止发送</h1>")//今后几乎不用
+}else{//否则，如果没找到敏感词
+  //就提示然哥说: xxx
+  document.write(`<h1>然哥说: ${msg}</h1>`)
+}
+</script>
+</body>
+</html>
