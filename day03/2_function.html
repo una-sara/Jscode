@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//定义制作西红柿鸡蛋面的函数
+function cook(dan,cai,mian){
+  //如果一个形参变量没有传值，则给一个默认值顶替。
+  if(da===undefined){
+    dan="鸡蛋"
+  }
+  if(cai===undefined){
+    cai="西红柿"
+  }
+  if(mian===undefined){
+    mian="面"
+  }
+  console.log(`炒${dan}`)
+  console.log(`炒${cai}`)
+  console.log(`炒${cai}和${dan}`)
+  console.log(`煮${mian}`)
+  console.log(`把${mian}和${cai}${dan}拌在一起`)
+  return `热腾腾的${cai}${dan}${mian}`;
+}
+//周一: 
+var wan=cook();
+console.log(`获得一碗:${wan}`);
+//周二:
+wan=cook("辣条","黄瓜","米线");
+console.log(`获得一碗:${wan}`);
+</script>
+</body>
+</html>

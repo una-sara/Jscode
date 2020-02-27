@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var str="明明喜欢我，却不告诉我。别理我，我想静静。静静是谁？你先告诉我明明谁谁。";
+//查找明明或静静
+var reg=/明明|静静/g;
+do{//不管有没有关键词，至少都要先找一次才能确定有没有
+  var arr=reg.exec(str);
+  if(arr!=null){//如果找到关键词
+    console.log(arr);//就输出
+  }else{//否则如果没找到
+    break;//就退出循环
+  }
+}while(true);//因为循环的退出由if else break控制，所以，循环条件写成死循环即可。
+</script>
+</body>
+</html>

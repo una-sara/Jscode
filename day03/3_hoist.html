@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function fun(){console.log(1)};
+  fun();//2
+  function fun(){console.log(2)};
+  fun();//2
+  //一定要输出1和2,怎么改？
+  var fun=100;
+  fun();//报错: fun不是一个函数
+  
+</script>
+</body>
+</html>
