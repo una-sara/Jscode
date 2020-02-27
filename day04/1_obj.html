@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//创建一个学生对象lilei:
+//姓名: Li Lei
+//年龄: 11
+//会自我介绍: I'm Li Lei, I'm 11
+var lilei={//创建一个新对象的意思
+  sname: "Li Lei",
+  sage: 11,
+  intrSelf:function(){
+    console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+  }
+}
+
+console.log(`lilei的年龄是: ${lilei.sage}`)
+lilei.intrSelf();
+console.log("过了一年，lilei长了一岁")
+lilei.sage++;
+console.log(`lilei的年龄是: ${lilei.sage}`);
+lilei.intrSelf();
+console.log("lilei改名叫li xiaolei")
+lilei.sname="Li Xiaolei";
+lilei.intrSelf();
+
+var hmm=new Object();
+hmm.sname="Han Meimei",
+hmm.sage=12;
+//lilei把自己的IntrSelf给了hmm的intrSelf。从此两个人共用一个函数
+hmm.intrSelf=lilei.intrSelf;
+hmm.intrSelf();
+//intrSelf的函数作用域中
+//  this-> "hmm.intrSelf()"中点前的hmm
+//  所以输出的人名不再是Li Lei，而是韩梅梅
+lilei.intrSelf();
+//lilei将自己的intrSelf函数，又交给了全局变量intrSelf一份
+var intrSelf=lilei.intrSelf;
+/*window.*/intrSelf();//?
+//  this->window 记住!
+//  this.sname   this.sage
+// window.      window.
+//   undefined    undefined
+</script>
+</body>
+</html>

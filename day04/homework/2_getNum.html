@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//1. 用外层函数包裹内层函数和受保护的变量
+function parent(){
+  var i=0;
+  //2. 外层函数，返回内层函数的对象
+  return function(){
+    console.log(++i);
+  }
+}
+//3. 调用外层函数获得内层函数对象，保存在变量中，反复使用。
+var getNum=parent();
+/*getNum=function(){
+    console.log(++i);
+  }*/
+getNum();//1
+getNum();//2
+i=0;
+getNum();//3
+</script>
+</body>
+</html>

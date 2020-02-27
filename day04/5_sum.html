@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+  //希望在项目中，所有的数组都可以调用.sum()函数自动求和
+  //强行为数组的原型对象添加一个sum函数
+  Array.prototype.sum=function(){
+    //先定义变量total=0,准备累加元素值
+    var total=0;
+    //遍历当前数组中每个元素
+    //将来的调用方式: 
+    //  arr1.sum(),//6
+    //  arr2.sum(),//15
+    //  arr3.sum() //28
+    //希望.前是哪个数组，就遍历哪个数组
+    //所以，只有this才能自动拿到将来.前的对象。
+    //为了避免写很多this，代码不容易理解，在公司中，经常给this起别名/外号
+    var arr=this;
+  //   狗蛋=李然
+    for(var i=0;i<arr.length;i++){
+      total+=arr[i];
+    }
+    //返回total
+    return total;
+  }
+  </script>
+</head>
+<body>
+<script>
+var arr1=[1,2,3];
+var arr2=[1,2,3,4,5];
+var arr3=[1,2,3,4,5,6,7];
+console.log(
+  arr1.sum(),//6
+  arr2.sum(),//15
+  arr3.sum() //28
+);
+</script>
+</body>
+</html>

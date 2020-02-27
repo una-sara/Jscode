@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+function Student(sname,sage){
+  this.sname=sname;
+  this.sage=sage;
+}
+//在Student的老公中添加一个intrSelf，让所有孩子公用！
+Student.prototype.intrSelf=function(){
+  console.log(`I'm ${this.sname}, I'm ${this.sage}`)
+}
+Student.prototype.className="初一2班"
+//用构造函数，反复创建三个学生对象
+var lilei=new Student("Li Lei",11);
+console.log(lilei);
+lilei.intrSelf();
+var hmm=new Student("Han Meimei",12);
+console.log(hmm);
+hmm.intrSelf();
+var lily=new Student("Lily",13);
+console.log(lily);
+lily.intrSelf();
+console.log(lilei.__proto__==hmm.__proto__);//true
+console.log(hmm.__proto__==lily.__proto__);
+//true
+console.log(
+  lilei.className,
+  hmm.className
+)
+//过了一年，大家一起变为初二2班
+Student.prototype.className="初二2班"
+console.log(
+  lilei.className,
+  hmm.className
+);
+//lilei留级了
+lilei.className="六年级2班";
+console.log(lilei);
+console.log(
+  lilei.className,
+  hmm.className
+);
+//过了一年，大家又升级了
+Student.prototype.className="初三2班"
+console.log(
+  lilei.className,
+  hmm.className,
+  lily.className
+);
+</script>
+</body>
+</html>

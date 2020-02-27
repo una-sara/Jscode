@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//等效于: nAdd=function(){ n++ };
+function fun(){//妈妈
+  var n=999;
+//js中: 强行给一个未声明的变量赋值，结果会自动在全局创建该变量，而不会报错！
+  nAdd=function(){ n++ };//孩子
+  return function(){//孩子
+    console.log(n)
+  }
+}
+var getN=fun();
+getN();//999
+nAdd();
+getN();//1000
+</script>
+</body>
+</html>
