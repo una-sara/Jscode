@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//定义父类型Enemy，集中保存San类型和Plane类型都有的属性结构和方法。
+class Enemy{
+  constructor(x,y){
+    this.x=x; 
+    this.y=y;
+  }
+  fly(){//San.prototype.fly=function
+    console.log(`飞行到x:${this.x},y:${this.y}位置`)
+  }
+}
+//定义San类型继承父类型Enemy
+class San extends Enemy{
+  constructor(x,y,award){
+    //只要继承父类型，就必须先调用父类型的构造函数。
+    super(x,y);//请奶奶先把共有的两个属性装到子对象上
+    //然后，妈妈再装自己给的属性
+    this.award=award
+    //最后孩子的属性来自于奶奶和妈妈共同的基因！
+  }
+  getAward(){
+    console.log(`击落一个降落伞，奖励${this.award}`)
+  }
+}
+//创建子类型对象，因为子类型构造函数中调用了父类型构造函数，且子类型原型对象继承父类型原型对象，所以，子对象s1中，同时包含子类型San和父类型Enemy的属性结构。且子对象s1即可调用San类型的方法，又可调用父类型中的原型对象方法。
+var s1=new San(10,50,"1 life");
+console.log(s1);
+s1.fly();
+s1.getAward();
+</script>
+</body>
+</html>

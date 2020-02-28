@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+//亮啊，托你件事儿，等你的任务执行完，帮我自动办一下
+function liang(callback){//异步!
+  console.log("亮起跑...");
+  setTimeout(function(){//异步!
+    console.log("亮到达终点!");
+    //等亮的最后一句话执行完，会自动执行提前传入的callback任务
+    callback();
+  },6000)
+}
+//然啊，托你件事儿，等你的活干完，帮我办一下。
+function ran(callback){//异步!
+  console.log("然起跑...");
+  setTimeout(function(){//异步!
+    console.log("然到达终点!");
+    //等然的最后一步执行完，会自动调用提前托付的任务callback
+    callback();
+  },2000)
+}
+//东啊，托付你一件事儿，等你的活干完，自动帮我办一下
+function dong(callback){//异步!
+  console.log("东起跑...");
+  setTimeout(function(){//异步!
+    console.log("东到达终点!")
+    //等东的最后一句话执行完，自动调用提前托付的任务callback
+    callback();
+  },4000)
+}
+liang(
+//callback
+  function(){
+    ran(
+    //callback
+      function(){
+        dong(
+        //callback
+          function(){
+            console.log("比赛结束!")
+          }
+        //当东最后一句话执行完，自动执行callback()，等效于执行console.log("比赛结束")
+        )
+      }
+    //当然最后一句话执行完，自动执行callback()，等效于执行dong()
+    );
+  }
+//当亮最后一句话执行完，自动执行callback()，等效于执行ran()
+);
+
+</script>
+</body>
+</html>

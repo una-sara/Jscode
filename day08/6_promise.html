@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+function liang(){
+  //1. 用new Promise将整段代码包裹起来
+  //3. 将整个new Promise对象抛出到函数外部
+  return new Promise(
+    function(door,err){
+      var bang="亮的接力棒";
+      console.log(`亮 拿着${bang} 起跑...`);
+      setTimeout(function(){
+        if(Math.random()<0.6){
+          console.log(`亮 拿着${bang} 到达终点!`);
+          //2. 在异步函数最后一句话执行完，开门通知下一个人可以开始执行。
+          console.log(`亮开门！把${bang}交给下一个人`)
+          door(bang);
+        }else{
+          console.log(`呀！亮摔倒了！！！`);
+          err("亮摔倒了");
+        }
+      },6000)
+    }
+  )
+}
+
+function ran(bang){
+  //1. 用new Promise()包括原函数所有代码
+  //3. 将new Promise对象返回到函数外部
+  return new Promise(
+    function(door,err){
+      console.log(`然 拿着${bang} 起跑...`);
+      setTimeout(function(){
+        if(Math.random()<0.6){
+          console.log(`然 拿着${bang} 到达终点!`);
+          //2. 在当前异步任务结束后，自动调用开关door()开门通知下一个函数可以开始执行
+          console.log(`然开门！把${bang}交给下一个人`)
+          door(bang)
+        }else{
+          console.log(`呀！然摔倒了！！！`);
+          err("然摔倒了");
+        }
+      },2000)
+    }
+  )
+}
+
+function dong(bang){
+  //1. 用new Promise()包裹原函数左右代码
+  //3. 返回new Promise()对象到函数外部
+  return new Promise(
+    function(door){
+      console.log(`东 拿着${bang} 起跑...`);
+      setTimeout(function(){//异步!
+        console.log(`东 拿着${bang} 到达终点!`)
+        //2. 当东的最后一步任务执行完，自动开门，通知下一个函数可以开始执行
+        console.log("东开门!")
+        door();
+      },4000)
+    }
+  )
+}
+
+liang()
+.then(ran)
+.then(dong)
+.then(()=>console.log("比赛结束"))
+.catch(function(err){
+  console.log(err);
+  console.log("弃权！")
+})
+/*
+liang()
+//2件事: 
+//1. 执行亮的任务内容: 亮起跑...
+//2. 创建new Promise对象并返回
+//return new Promise()
+.then(ran)
+//能否继续接.then()取决于ran是否支持new Promise()
+//当liang()中调用door()时，.then()中的ran()开始自动执行！
+//也干了2件事:
+//1. 调用ran中的任务内容: 然起跑...
+//2. 返回新的new Promise()对象
+//return new Promise()
+.then(dong)
+//东是否可接.then()取决于dong内部是否返回new Promise()对象
+//当ran()中调用door()开门时，dong()的内容开始执行:
+//2件事: 
+//1. 执行dong()的函数任务: 东起跑..
+//2. 返回新的new Promise()对象
+//正是因为dong()返回了新的new Promise对象，才可接下一个.then(函数)
+//return new Promise()
+.then(function(){
+  console.log("比赛结束");
+})
+*/
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+function liang(){
+  return new Promise(
+    function(door){
+      var bang="亮的接力棒";
+      console.log(`亮起跑...`);
+      setTimeout(function(){
+        console.log(`亮到达终点!`);
+        console.log(`亮开门`)
+        door(bang);
+      },6000)
+    }
+  )
+}
+
+function ran(){
+  return new Promise(
+    function(door){
+      var bang="然的接力棒";
+      console.log(`然起跑...`);
+      setTimeout(function(){
+        console.log(`然到达终点!`);
+        console.log(`然开门！`)
+        door(bang)
+      },2000)
+    }
+  )
+}
+
+function dong(){
+  return new Promise(
+    function(door){
+      var bang="东的接力棒";
+      console.log(`东起跑...`);
+      setTimeout(function(){
+        console.log(`东到达终点!`)
+        console.log("东开门!")
+        door(bang);
+      },4000)
+    }
+  )
+}
+
+Promise.all([//数组中要求必须传入new Promise对象
+  liang(),//new Promise对象
+  ran(),//new Promise对象
+  dong()//new Promise对象
+])
+.then(arr=>{
+  console.log("比赛结束");
+  console.log(`收到以下接力棒:[${arr}]`)
+})
+
+
+</script>
+</body>
+</html>

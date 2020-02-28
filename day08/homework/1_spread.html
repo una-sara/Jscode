@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var x="", y="", z="";
+function setData({x="",y="",z=""}){
+  window.x=x;
+  window.y=y;
+  window.z=z;
+}
+var obj={x:"亮亮", y:"然然"};
+var obj2={z:"东东"}
+setData({
+  ...obj,...obj2
+});
+console.log(x,y,z);
+</script>
+</body>
+</html>
