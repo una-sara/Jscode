@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script>
+    //将来在企业项目中，都是将操作一种对象的所有函数，封装在一个大的对象中。
+    var user={
+      signin:function(){
+        console.log("登陆");
+      },
+      signout:function(){
+        console.log("注销")
+      },
+      signup:function(){
+        console.log("注册")
+      },
+      changePwd:function(){
+        console.log("修改密码");
+      }
+    }
+  </script>
+</head>
+<body>
+<script>
+//     配对   自定义
+//var {signin:signin,signup:signup}=user;
+//简写: 一个名字即用作配对
+//             又用作变量名
+  var {signin,signup}=user;
+  signin();
+  signup();
+</script>
+</body>
+</html>
